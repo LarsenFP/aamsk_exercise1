@@ -4,7 +4,7 @@
 .idea
 /.idea/libraries
 /.idea/modules.xml
-/.idea/workspace.xml
+/.idea/workspace.xml - remove
 .DS_Store
 /build
 /captures
