@@ -1,11 +1,11 @@
 package valery.pankov.aamsk_exercise1;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,15 +24,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 msg = (et_preview.getText()).toString();
                 if(msg.length()!=0){
-                    watchPreview(msg);
+                    PreviewActivity.start(MainActivity.this, msg);
+                }else{
+                    warningToast();
                 }
             }
         });
     }
 
-    private void watchPreview(String msg) {
-        Intent previewActivityIntent = new Intent(this, PreviewActivity.class);
-        previewActivityIntent.putExtra("KEY_MSG", msg);
-        startActivity(previewActivityIntent);
+    public void warningToast(){
+        Toast.makeText(MainActivity.this, R.string.warning_msg, Toast.LENGTH_LONG).show();
     }
 }

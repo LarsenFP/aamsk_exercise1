@@ -1,7 +1,9 @@
 package valery.pankov.aamsk_exercise1;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +15,13 @@ public class PreviewActivity extends AppCompatActivity
     private Button btn_send;
     private TextView tv_preview;
     private String msg;
+
+    public static void start(@NonNull Activity activity, @NonNull String msg) {
+        final Intent intent = new Intent(activity, PreviewActivity.class);
+        intent.putExtra(KEY_MSG, msg);
+        activity.startActivity(intent);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,13 +34,17 @@ public class PreviewActivity extends AppCompatActivity
         btn_send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent sendIntent = new Intent();
-                sendIntent.setAction(Intent.ACTION_SEND);
-                sendIntent.putExtra(Intent.EXTRA_TEXT, msg);
-                sendIntent.setType("text/plain");
-                startActivity(sendIntent);
+                share();
             }
         });
+    }
+
+    private void share(){
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, msg);
+        sendIntent.setType("text/plain");
+        startActivity(sendIntent);
     }
 
 
