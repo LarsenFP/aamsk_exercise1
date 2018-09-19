@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class PreviewActivity extends AppCompatActivity
 {
@@ -44,7 +45,17 @@ public class PreviewActivity extends AppCompatActivity
         sendIntent.setAction(Intent.ACTION_SEND);
         sendIntent.putExtra(Intent.EXTRA_TEXT, msg);
         sendIntent.setType("text/plain");
-        startActivity(sendIntent);
+        if (sendIntent.resolveActivity(getPackageManager()) != null) {
+            startActivity(sendIntent);
+        } else {
+            warningToast();
+            // do something else
+        }
+
+    }
+
+    public void warningToast(){
+        Toast.makeText(PreviewActivity.this, R.string.warning_msg, Toast.LENGTH_LONG).show();
     }
 
 

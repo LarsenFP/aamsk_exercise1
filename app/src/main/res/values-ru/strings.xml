@@ -5,4 +5,5 @@
     <string name="et_hint">Введите своё сообщение здесь...</string>
     <string name="btn_send">Отправить</string>
     <string name="warning_msg">Сообщение не может быть пустым</string>
+    <string name="warning_msg_new">Мне Вас жаль, Ваш телефон слишком ограниченный</string>
 </resources>

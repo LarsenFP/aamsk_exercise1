@@ -12,6 +12,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btn_preview;
     private EditText et_preview;
     private String msg;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,16 +24,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 msg = (et_preview.getText()).toString();
-                if(msg.length()!=0){
+                if (msg.length() != 0) {
                     PreviewActivity.start(MainActivity.this, msg);
-                }else{
+                } else {
                     warningToast();
                 }
             }
         });
     }
 
-    public void warningToast(){
+    public void warningToast() {
         Toast.makeText(MainActivity.this, R.string.warning_msg, Toast.LENGTH_LONG).show();
     }
 }
